@@ -5,11 +5,7 @@ import type { Metadata } from "next";
 import PrimaryBtn from "@/Components/Buttons/PrimaryBtn";
 import { getMDXComponent } from "next-contentlayer/hooks";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+type Params = Promise<{ slug: string }>
 
 async function getPost(slug: string) {
   const markdown = allProtoDesigns.find(
@@ -21,10 +17,8 @@ async function getPost(slug: string) {
   return markdown;
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const slug = params.slug;
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { slug } = await params
   const markdown = allProtoDesigns.find(
     (doc) => doc.slugAsParams.replace("designs/", "") === slug
   );
@@ -53,8 +47,8 @@ export async function generateMetadata({
   };
 }
 
-const ProtoDetials = async ({ params }: PageProps) => {
-  const props = await getPost(params.slug);
+const ProtoDetials = async ({ params }: { params: Params }) => {
+  const props = await getPost((await params).slug);
 
   const MDX = getMDXComponent(props.body.code);
 
