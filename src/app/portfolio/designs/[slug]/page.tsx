@@ -50,6 +50,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 const ProtoDetials = async ({ params }: { params: Params }) => {
   const props = await getPost((await params).slug);
 
+  
   // const MDX = getMDXComponent(props.body.code);
 
   return (
