@@ -11,17 +11,17 @@ import {
   TbWorldCode,
 } from "react-icons/tb";
 
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 export default function ServicesCards() {
   return (
     <div className="grid md:grid-cols-2 gap-9 mt-8">
       {Categories.map((category, i) => (
-        <motion.div
-          initial={{ opacity: 0, translateY: 20 }}
-          whileInView={{ opacity: 1, translateY: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: i * 0.2 }}
+        <div
+          // initial={{ opacity: 0, translateY: 20 }}
+          // whileInView={{ opacity: 1, translateY: 0 }}
+          // viewport={{ once: true }}
+          // transition={{ duration: 0.3, delay: i * 0.2 }}
           key={category.id}
           // className="services-card hover:scale-110"
         >
@@ -39,7 +39,7 @@ export default function ServicesCards() {
             <TbPencilBolt className="text-4xl text-yellow-500" />
           ) : null}
           <p>{category.desc}</p>
-        </motion.div>
+        </div>
       ))}
     </div>
   );
