@@ -50,7 +50,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 const ProtoDetials = async ({ params }: { params: Params }) => {
   const props = await getPost((await params).slug);
 
-  const MDX = getMDXComponent(props.body.code);
+  console.log(props.body)
+
+  // const MDX = getMDXComponent(props.body.code);
 
   return (
     <article className="lg:px-28 p-10 grid gap-8">
@@ -85,7 +87,7 @@ const ProtoDetials = async ({ params }: { params: Params }) => {
         </div>
 
         <div className="h-full overflow-hidden rounded-2xl bg-gray-900">
-          <MDX />
+          {/* <MDX /> */}
         </div>
       </div>
     </article>
